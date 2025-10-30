@@ -49,10 +49,10 @@
                         <td>{{ cart_item.name }}</td>
                         <td>{{ cart_item.hire_from.strftime('%d %B %Y %I:%M %p') }}</td>
                         <td>{{ cart_item.hire_to.strftime('%d %B %Y %I:%M %p') }}</td>
-                        <td>${{ cart_item.hire_rate }} per day</td>
+                        <td>₹{{ cart_item.hire_rate }} per day</td>
                         <td>{{ cart_item.qty }}</td>
                         <td>{% if cart_item.discount != 0 %}-${{ cart_item.discount }}{% endif %}</td>
-                        <td>${{ cart_item.subtotal }}</td>
+                        <td>₹{{ cart_item.subtotal }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -66,20 +66,20 @@
                     {% if total_discount !=0 %}
                     <tr>
                         <th class="text-right">Total before discount</th>
-                        <th>${{ original_total }}</th>
+                        <th>₹{{ original_total }}</th>
                     </tr>
                     <tr>
                         <th class="text-right">Discount applied</th>
-                        <th>-${{ total_discount }}</th>
+                        <th>-₹{{ total_discount }}</th>
                     </tr>
                     {% endif %}
                     <tr>
                         <th class="text-right">Includes GST of</th>
-                        <th>${{ total_gst }}</th>
+                        <th>₹{{ total_gst }}</th>
                     </tr>
                     <tr>
                         <th class="text-right">Total</th>
-                        <th>${{ cart_total }}</th>
+                        <th>₹{{ cart_total }}</th>
                     </tr>
                 </tbody>
             </table>

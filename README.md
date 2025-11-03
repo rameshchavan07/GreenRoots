@@ -513,10 +513,7 @@ We welcome contributions to AgriHire Solutions! Here's how you can help improve 
 ## 📄 License
 This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
----
 
-
----
 
 > *GreenRoots — Empowering developers to build a greener digital future.*
 

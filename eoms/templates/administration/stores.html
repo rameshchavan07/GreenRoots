@@ -5,7 +5,6 @@
 {% endblock %}
 
 {% block content %}
-
 <div class="container-fluid">
     <h3 class="text-center mb-0">Store Management</h3><br>
     <form method="post" action="{{ url_for('stores') }}" class="row g-3 align-items-end">
@@ -25,7 +24,7 @@
     <hr>
     <div style="height: 420px; overflow-y: auto;">
         <table id="store_list" class="table table-advance table-hover">
-            <thead style="position: sticky;top: 0;z-index: 999;">
+            <thead style="position: sticky; top: 0; z-index: 999;">
                 <tr>
                     <th>#</th>
                     <th>Store Name</th>
@@ -43,18 +42,20 @@
                     <td>{{ store.store_name }}</td>
                     <td>{{ store.phone }}</td>
                     <td>{{ store.email }}</td>
-                    <td>{{ store.address_line1 }} {{ store.address_line2 }} {{ store.suburb }} {{ store.city }} {{
-                        store.post_code }}</td>
+                    <td>
+                        {{ store.address_line1 }} {{ store.address_line2 }} {{ store.suburb }} {{ store.city }} {{ store.post_code }}, India
+                    </td>
                     <td>
                         <a type="button" data-toggle="tooltip" data-placement="top" href="#" title="Edit"
-                            data-bs-toggle="modal" data-bs-target="#storeModal" onclick="openModal('{{ store.store_id }}', '{{ store.store_name }}', 
+                            data-bs-toggle="modal" data-bs-target="#storeModal" 
+                            onclick="openModal('{{ store.store_id }}', '{{ store.store_name }}', 
                             '{{ store.phone }}', '{{ store.email }}', '{{ store.address_line1 }}', 
                             '{{ store.address_line2 }}', '{{ store.suburb }}', '{{ store.city }}', 
-                            '{{ store.post_code }}')">
+                            '{{ store.post_code }}', '{{ store.country or 'India' }}')">
                             <i class="far fa-edit main-color mx-1"></i>
                         </a>
                         <a type="button" class="del-btn" data-toggle="tooltip" data-placement="top" href="#"
-                            title="delete" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
+                            title="Delete" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
                             data-bs-id="{{ store.store_id }}">
                             <i class="fas fa-times-circle main-color mx-1"></i>
                         </a>
@@ -63,7 +64,7 @@
                 {% endfor %}
                 {% else %}
                 <tr>
-                    <td colspan="7" class="text-center">There is no data to be showed.</td>
+                    <td colspan="7" class="text-center">There is no data to be shown.</td>
                 </tr>
                 {% endif %}
             </tbody>
@@ -83,7 +84,7 @@
             <div class="modal-body">
                 <form id="storeForm" class="needs-validation" novalidate action="#" method="POST">
                     <div class="mb-3 text-start">
-                        <label for="store_name" class="form-label ">Store Name</label>
+                        <label for="store_name" class="form-label">Store Name</label>
                         <input type="text" class="form-control" id="form_store_name" name="store_name" required>
                         <div id="server_error" class="invalid-feedback">
                             Please Enter Valid Store Name!
@@ -91,36 +92,40 @@
                     </div>
                     <div class="mb-3 text-start">
                         <label for="phone" class="form-label">Store Phone</label>
-                        <input type="phone" class="form-control" id="form_phone" name="phone" required>
+                        <input type="tel" class="form-control" id="form_phone" name="phone" required>
                     </div>
                     <div class="mb-3 text-start">
                         <label for="email" class="form-label">Store Email</label>
                         <input type="email" class="form-control" id="form_email" name="email" required>
                     </div>
                     <div class="mb-3 text-start">
-                        <label for="address_line1" class="form-label">Address line1</label>
-                        <input type="address_line1" class="form-control" id="form_address_line1" name="address_line1"
-                            required>
+                        <label for="address_line1" class="form-label">Address Line 1</label>
+                        <input type="text" class="form-control" id="form_address_line1" name="address_line1" required>
                     </div>
                     <div class="mb-3 text-start">
-                        <label for="address_line2" class="form-label">Address line2</label>
-                        <input type="address_line2" class="form-control" id="form_address_line2" name="address_line2">
+                        <label for="address_line2" class="form-label">Address Line 2</label>
+                        <input type="text" class="form-control" id="form_address_line2" name="address_line2">
                     </div>
                     <div class="mb-3 text-start">
                         <label for="suburb" class="form-label">Suburb</label>
-                        <input type="suburb" class="form-control" id="form_suburb" name="suburb" required>
+                        <input type="text" class="form-control" id="form_suburb" name="suburb" required>
                     </div>
                     <div class="mb-3 text-start">
                         <label for="city" class="form-label">City</label>
-                        <input type="city" class="form-control" id="form_city" name="city" required>
+                        <input type="text" class="form-control" id="form_city" name="city" required>
                     </div>
                     <div class="mb-3 text-start">
                         <label for="post_code" class="form-label">Post Code</label>
-                        <input type="post_code" class="form-control" id="form_post_code" name="post_code" required>
+                        <input type="text" class="form-control" id="form_post_code" name="post_code" required>
                     </div>
+                    <div class="mb-3 text-start">
+                        <label for="country" class="form-label">Country</label>
+                        <input type="text" class="form-control" id="form_country" name="country" value="India" readonly>
+                    </div>
+
                     <input type="hidden" name="store_id" id="form_store_id">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                        onclick="refleshpage()">Cancel</button>
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="refleshpage()">Cancel</button>
                     <button type="submit" class="btn btn-danger" id="confirmSaveBtn">Save</button>
                 </form>
             </div>
@@ -150,13 +155,11 @@
         </div>
     </div>
 </div>
-
-
 {% endblock %}
 
 {% block js %}
 <script>
-    function openModal(storeId = '', storeName = '', phone = '', email = '', addressLine1 = '', addressLine2 = '', suburb = '', city = '', postCode = '') {
+    function openModal(storeId = '', storeName = '', phone = '', email = '', addressLine1 = '', addressLine2 = '', suburb = '', city = '', postCode = '', country = 'India') {
         document.getElementById('form_store_id').value = storeId;
         document.getElementById('form_store_name').value = storeName;
         document.getElementById('form_phone').value = phone;
@@ -166,6 +169,7 @@
         document.getElementById('form_suburb').value = suburb;
         document.getElementById('form_city').value = city;
         document.getElementById('form_post_code').value = postCode;
+        document.getElementById('form_country').value = country || 'India';
         document.getElementById('form_store_name').classList.remove('is-invalid');
         $('#storeModal').modal('show');
     }
@@ -175,17 +179,14 @@
         delButtons.forEach(function (button) {
             button.addEventListener('click', function (event) {
                 event.preventDefault();
-
                 const delstoreId = button.getAttribute('data-bs-id');
                 document.getElementById('delstoreId').value = delstoreId;
             });
         });
     });
 
-
     document.getElementById('storeForm').addEventListener('submit', function (event) {
         event.preventDefault();
-        // Get the form data
         var formData = new FormData(this);
         if (validateForm()) {
             fetch('/manage_store', {
@@ -203,14 +204,12 @@
                 })
                 .catch(error => {
                     console.error('Error:', error);
-
                 });
         }
-
     });
+
     function validateForm() {
         var isValid = true;
-
         var store_name = document.getElementById('form_store_name').value;
         if (store_name === "") {
             isValid = false;
@@ -218,12 +217,11 @@
         } else {
             document.getElementById('form_store_name').classList.remove('is-invalid');
         }
-
         return isValid;
     }
 
     function refleshpage() {
-        window.location.reload(); // Reload the current page
+        window.location.reload();
     }
 </script>
 {% endblock %}

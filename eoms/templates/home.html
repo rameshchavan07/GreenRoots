@@ -116,13 +116,15 @@
                 <div class="col">
                     <a class="multicard__card" href="{{url_for('view_stores')}}">
                         <div class="multicard__card-img">
-                            <img class="w-100" loading="lazy" alt="FIND A BRANCH" srcset="..\static\images\homepage\branch_nz.jpg">
+                            <img class="w-100" loading="lazy" alt="FIND A BRANCH" 
+     src="{{ url_for('static', filename='images/homepage/branch_nz.jpg') }}">
+
                         </div>
                         <div class="multicard__card-content">
                             <div class="eyebrow multicard__card-eyebrow fw-bold">FIND A BRANCH</div>
-                            <h4 class="multicard__card-title main-color">Discover our 18 branches across New Zealand</h4>
+                            <h4 class="multicard__card-title main-color">Discover our 18 branches across India</h4>
                             <div class="multicard__card-description bodysmall">
-                                <p>Locate the nearest branch to you and access our comprehensive range of agricultural machinery rental services conveniently spread across 200 locations in New Zealand.</p>
+                                <p>Locate the nearest branch to you and access our comprehensive range of agricultural machinery rental services conveniently spread across 200 locations in India.</p>
                             </div>
                         </div>
                     </a>

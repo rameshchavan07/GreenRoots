@@ -60,44 +60,7 @@ Make sure you have the following installed:
 
 ---
 
-## 🛠️ Installation
 
-Clone the repository:
-```bash
-git clone https://github.com/rameshchavan07/GreenRoots
-```
-
-Navigate to the project directory:
-```bash
-cd GreenRoots
-```
-
-Install dependencies:
-```bash
-pip install -r requirements.txt
-```
-
----
-
-## ▶️ Usage
-
-Run the project using:
-```bash
-python <entrypoint>
-```
-*(Replace `<entrypoint>` with your main Python file, e.g., `app.py` or `manage.py`.)*
-
----
-
-## 🧪 Testing
-
-GreenRoots uses the **pytest** framework for testing.  
-To run all tests:
-```bash
-pytest
-```
-
----
 
 ## 🤝 Contributing
 
@@ -117,9 +80,6 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 
 ---
 
-## 🙌 Acknowledgements
-- Built with ❤️ using **Python** and **Markdown**
-- Inspired by sustainable innovation and agricultural technology
 
 ---
 
